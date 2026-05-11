@@ -17,10 +17,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        // ආරම්භයේදී ජීවිත ප්‍රමාණය සෙට් කිරීම
+        
         currentLives = maxLives;
 
-        // Rigidbody එක ස්ක්‍රිප්ට් එකෙන්ම හොයාගන්න උත්සාහ කිරීම (Inspector එකේ අමතක වුණොත්)
+      
         if (rb == null) rb = GetComponent<Rigidbody2D>();
 
         if (healthSlider != null)
@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isDead) return;
 
-        // කීබෝඩ් එකෙන් Input ලබා ගැනීම (WASD හෝ Arrow Keys)
+        
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
     }
@@ -43,11 +43,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isDead) return;
 
-        // ප්ලේයර්ව මූව් කරවන ප්‍රධාන කොටස
+       
         rb.MovePosition(rb.position + movement.normalized * moveSpeed * Time.fixedDeltaTime);
     }
 
-    // --- හතුරෙක්ගේ හැපුණොත් හානි සිදුවීම ---
+    
     public void TakeDamage()
     {
         if (isDead) return;
@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
         currentLives -= 1;
         if (healthSlider != null) healthSlider.value = currentLives;
 
-        // හානි වූ විට රතු පැහැයෙන් දිස්වීම (Flash Effect)
+      
         GetComponent<SpriteRenderer>().color = Color.red;
         Invoke("ResetColor", 0.1f);
 
@@ -70,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
     void Die()
     {
         isDead = true;
-        rb.linearVelocity = Vector2.zero; // මරුණු පසු චලනය නැවැත්වීම
+        rb.linearVelocity = Vector2.zero; 
         Debug.Log("Player Marila!");
     }
 }
